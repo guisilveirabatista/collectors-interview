@@ -1,6 +1,5 @@
 package controller;
 
-import lombok.RequiredArgsConstructor;
 import model.Employee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +9,13 @@ import repository.EmployeeRepository;
 import java.util.List;
 
 @RestController("/employees")
-@RequiredArgsConstructor
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
+
+    public EmployeeController() {
+        this.employeeRepository = new EmployeeRepository();
+    }
 
     @GetMapping
     public Employee findById(@PathVariable Long id) {
